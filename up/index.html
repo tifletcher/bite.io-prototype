@@ -10,9 +10,6 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-        <!--<link rel="stylesheet" href="/css/normalize.css">-->
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/bootstrap.min.css">
         <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
@@ -42,36 +39,11 @@
                     </div>
                 </div>
             </fieldset>
-            <div id="ytp"><!-- class="hidden">-->
-                <!--<iframe width="640" height="360" src="http://www.youtube.com/embed/58ZK9g8Aw98?t=0m30s&autoplay=0" frameborder="0" allowfullscreen></iframe>-->
-                <!--<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/PKffm2uI4dk" frameborder="0"></iframe>-->
+            <div id="ytp">
             </div>
             <hr />
             <button id="submit" type="submit" class="btn btn-inverse btn-large">Pick!</button>
         </form>
-
-        <!--<div class="wrapper">
-            <iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/PKffm2uI4dk" frameborder="0"></iframe>
-            <div class="formdiv">
-                <form>
-                <fieldset>
-
-                <legend>Form Name</legend>
-
-                <div class="control-group">
-                  <label class="control-label" for="textinput">Text Input</label>
-                  <div class="controls">
-                    <input id="textinput" name="textinput" type="text" placeholder="placeholder" class="input-xlarge">
-                    
-                  </div>
-                </div>
-
-                </fieldset>
-                </form>
-            </div>
-
-            <div class="clear">Hello World</div>
-        </div>-->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
@@ -89,7 +61,7 @@
                     if ($('#duration').val() != '')
                         qs += '&end=' + (parseInt($('#startbox').val(),10) + parseInt($('#duration').val(),10));
                 }
-                
+
                 $('#ytp').html('<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/' + $('#urlbox').val() + qs + '" frameborder="0"></iframe>');
                 $('#ytp').removeClass('hidden');
             }
@@ -101,12 +73,5 @@
 
         </script>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src='//www.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
     </body>
 </html>
