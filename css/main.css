@@ -19,7 +19,7 @@ textarea {
 }
 
 html {
-    background-color: black;
+    //background-color: black;
 }
 
 body {
@@ -27,12 +27,44 @@ body {
     line-height: 1.4;
 }
 
+form {
+    width: 640px;
+}
+
 video {
     margin: 0 auto;
     display: block;
-    margin-top: 60px;
+    margin-top: 10%;
 }
 
+iframe {
+    position: relative;
+    margin-left: -320px;
+    left: 50%;
+}
+
+.secondspicker {
+    width:118px;
+}
+
+
+/*
+div.wrapper {
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+div.formdiv {
+    background-color: gray;
+    float:left;
+    width: 640px;
+    height: 385px;
+}
+
+.clear {
+    clear: both;
+}
+*/
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection rule sets have to be separate.

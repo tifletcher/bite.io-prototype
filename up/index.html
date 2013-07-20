@@ -6,28 +6,99 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+        <title>Drp Video Picker</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="stylesheet" href="/css/normalize.css">
+        <!--<link rel="stylesheet" href="/css/normalize.css">-->
         <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
         <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
-    <body>
+    <body class="container">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-        <video src="/v/PKffm2uI4dk.mp4" poster="movie.jpg" controls>
-        </video>
+        <form>
+            <fieldset>
+                <legend>Video Picker</legend>
+                <div class="control-group">
+                    <div class="controls controls-row">
+                        <div class="input-prepend">
+                            <span class="add-on">url</span>
+                            <input id="urlbox" class="input-xlarge" placeholder="placeholder" type="text">
+                        </div>
+                        <div class="input-append">
+                            <input id="startbox" class="secondspicker" placeholder="start" type="text">
+                            <span class="add-on">ss</span>
+                        </div>
+                        <div class="input-append">
+                            <input id="duration" class="secondspicker" placeholder="duration" type="text">
+                            <span class="add-on">ss</span>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div id="ytp"><!-- class="hidden">-->
+                <!--<iframe width="640" height="360" src="http://www.youtube.com/embed/58ZK9g8Aw98?t=0m30s&autoplay=0" frameborder="0" allowfullscreen></iframe>-->
+                <!--<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/PKffm2uI4dk" frameborder="0"></iframe>-->
+            </div>
+            <hr />
+        </form>
+
+        <!--<div class="wrapper">
+            <iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/PKffm2uI4dk" frameborder="0"></iframe>
+            <div class="formdiv">
+                <form>
+                <fieldset>
+
+                <legend>Form Name</legend>
+
+                <div class="control-group">
+                  <label class="control-label" for="textinput">Text Input</label>
+                  <div class="controls">
+                    <input id="textinput" name="textinput" type="text" placeholder="placeholder" class="input-xlarge">
+                    
+                  </div>
+                </div>
+
+                </fieldset>
+                </form>
+            </div>
+
+            <div class="clear">Hello World</div>
+        </div>-->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="/js/plugins.js"></script>
         <script src="/js/main.js"></script>
+
+        <script type="text/javascript">
+
+        $(document).ready(function() {
+            var loader = function() {
+                var qs = '';
+                if ($('#startbox').val() != '') {
+                    qs = '?enablejsapi=1&version=3&start=' + $('#startbox').val();
+
+                    if ($('#duration').val() != '')
+                        qs += '&end=' + (parseInt($('#startbox').val(),10) + parseInt($('#duration').val(),10));
+                }
+                
+                $('#ytp').html('<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/' + $('#urlbox').val() + qs + '" frameborder="0"></iframe>');
+                $('#ytp').removeClass('hidden');
+            }
+
+            $('#urlbox').keyup(loader);
+            $('#startbox').keyup(loader);
+            $('#duration').keyup(loader);
+        });
+
+        </script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
