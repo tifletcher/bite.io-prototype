@@ -18,9 +18,19 @@ textarea {
     color: #222;
 }
 
+html {
+    background-color: black;
+}
+
 body {
     font-size: 1em;
     line-height: 1.4;
+}
+
+video {
+    margin: 0 auto;
+    display: block;
+    margin-top: 60px;
 }
 
 /*
