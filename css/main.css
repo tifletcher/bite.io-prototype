@@ -27,8 +27,9 @@ body {
     line-height: 1.4;
 }
 
-form {
+.container form {
     width: 640px;
+    margin: 0 auto;
 }
 
 video {
@@ -45,6 +46,11 @@ iframe {
 
 .secondspicker {
     width:118px;
+}
+
+button#submit {
+    width: 50%;
+    margin-left: 25%;
 }
 
 
