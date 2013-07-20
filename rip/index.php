@@ -18,9 +18,9 @@ $url = escapeshellarg($_POST['url']);
 $start_time = escapeshellarg('00:00:'.str_pad($_POST['start_time'], 2, '0', STR_PAD_LEFT));
 $duration = escapeshellarg('00:00:'.str_pad($_POST['duration'], 2, '0', STR_PAD_LEFT));
 
-$output_filename = sha1(microtime()).'.webm';
+$output_filename = sha1(microtime()).'.mp4';
 $output_path = dirname(__FILE__).'/../v/'.$output_filename;
-$cmd = 'youtube-dl '.$url.' -o - | avconv -i - -ss '.$start_time.' -t '.$duration.' '.$output_path;
+$cmd = 'youtube-dl '.$url.' -o - | avconv -i - -ss '.$start_time.' -t '.$duration.' -codec copy '.$output_path;
 
 error_log($cmd);
 shell_exec($cmd . ' >/dev/null 2>/dev/null &');
