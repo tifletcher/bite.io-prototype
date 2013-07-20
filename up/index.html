@@ -19,21 +19,21 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-        <form>
+        <form action="/rip" method="POST">
             <fieldset>
                 <legend>Video Picker</legend>
                 <div class="control-group">
                     <div class="controls controls-row">
                         <div class="input-prepend">
                             <span class="add-on">url</span>
-                            <input id="urlbox" class="input-xlarge" placeholder="placeholder" type="text">
+                            <input id="urlbox" name="url" class="input-xlarge" placeholder="placeholder" type="text">
                         </div>
                         <div class="input-append">
-                            <input id="startbox" class="secondspicker" placeholder="start" type="text">
+                            <input id="startbox" name="start_time" class="secondspicker" placeholder="start" type="text">
                             <span class="add-on">ss</span>
                         </div>
                         <div class="input-append">
-                            <input id="duration" class="secondspicker" placeholder="duration" type="text">
+                            <input id="duration" name="duration" class="secondspicker" placeholder="duration" type="text">
                             <span class="add-on">ss</span>
                         </div>
                     </div>

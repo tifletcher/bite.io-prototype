@@ -25,8 +25,9 @@ $cmd = 'youtube-dl '.$url.' -o - | avconv -i - -ss '.$start_time.' -t '.$duratio
 error_log($cmd);
 shell_exec($cmd . ' >/dev/null 2>/dev/null &');
 
-$response = array('video' => 'http://dogfoo.de/v/'.$output_filename,
-                  'thumbnail' => 0);
+header('Location: /?'.$output_filename);
+/* $response = array('video' => 'http://dogfoo.de/v/'.$output_filename, */
+/*                   'thumbnail' => 0); */
 
 echo json_encode($response);
 ?>
