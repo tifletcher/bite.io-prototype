@@ -22,6 +22,7 @@ $output_filename = sha1(microtime()).'.webm';
 $output_path = dirname(__FILE__).'/../v/'.$output_filename;
 $cmd = 'youtube-dl '.$url.' -o - | avconv -i - -ss '.$start_time.' -t '.$duration.' '.$output_path;
 
+error_log($cmd);
 shell_exec($cmd . ' >/dev/null 2>/dev/null &');
 
 $response = array('video' => 'http://dogfoo.de/v/'.$output_filename,
