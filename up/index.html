@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Drp Video Picker</title>
+        <title>bite.io</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
@@ -21,16 +21,17 @@
 
         <form action="/rip" method="POST">
             <fieldset>
-                <legend>Video Picker</legend>
+                <legend>get the perfect video bite.</legend>
                 <div class="control-group">
                     <div class="controls controls-row">
                         <div class="input-prepend">
                             <span class="add-on">url</span>
-                            <input id="urlbox" name="url" class="input-xlarge" placeholder="placeholder" type="text">
+                            <input id="urlbox" name="url" class="input-xlarge" placeholder="youtube tag" type="text">
                         </div>
                         <div class="input-append">
-                            <input id="startbox" name="start_time" class="secondspicker" placeholder="start" type="text">
-                            <span class="add-on">ss</span>
+                            <input id="start-mins" name="start_mins" class="digits" placeholder="00" type="text">
+                            <input id="start-secs" name="start_secs" class="digits" placeholder="00" type="text">
+                            <span class="add-on">mm|ss</span>
                         </div>
                         <div class="input-append">
                             <input id="duration" name="duration" class="secondspicker" placeholder="duration" type="text">
@@ -42,7 +43,7 @@
             <div id="ytp">
             </div>
             <hr />
-            <button id="submit" type="submit" class="btn btn-inverse btn-large">Pick!</button>
+            <button id="submit" type="submit" class="btn btn-inverse btn-large">bite!</button>
         </form>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -52,17 +53,26 @@
 
         <script type="text/javascript">
 
+        var getDigits = function(selector) {
+            var selval = $(selector).val();
+            if (selval) return parseInt(selval,10); 
+            return 0;
+        }
+
         $(document).ready(function() {
             var loader = function() {
-                var qs = '';
-                if ($('#startbox').val() != '') {
-                    qs = '?enablejsapi=1&version=3&start=' + $('#startbox').val();
+                var url = $('#urlbox').val();
+                if (!url) return;
+
+                var startTime = getDigits('#start-hours')*60*60 + getDigits('#start-mins')*60 + getDigits('#start-secs');
+                if (startTime > 0) {
+                    url += '?enablejsapi=1&version=3&start=' + startTime;
 
                     if ($('#duration').val() != '')
-                        qs += '&end=' + (parseInt($('#startbox').val(),10) + parseInt($('#duration').val(),10));
+                        url += '&end=' + (startTime + getDigits('#duration'));
                 }
 
-                $('#ytp').html('<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/' + $('#urlbox').val() + qs + '" frameborder="0"></iframe>');
+                $('#ytp').html('<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/' + url + '" frameborder="0"></iframe>');
                 $('#ytp').removeClass('hidden');
             }
 

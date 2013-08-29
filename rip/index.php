@@ -15,8 +15,15 @@ if(empty($_POST))
   }
 
 $url = escapeshellarg($_POST['url']);
-$start_time = escapeshellarg('00:00:'.str_pad($_POST['start_time'], 2, '0', STR_PAD_LEFT));
+
+$start_mins = $_POST['start_mins'];
+$start_secs = str_pad($_POST['start_secs'], 2, '0', STR_PAD_LEFT);
+$start_hours = str_pad(intval($start_mins/60), 2, '0', STR_PAD_LEFT);
+$start_mins = str_pad($start_mins%60, 2, '0', STR_PAD_LEFT);
+
+$start_time = escapeshellarg($start_hours.':'.$start_mins.':'.$start_secs);
 $duration = escapeshellarg('00:00:'.str_pad($_POST['duration'], 2, '0', STR_PAD_LEFT));
+
 
 $output_filename = sha1(microtime()).'.mp4';
 $output_path = dirname(__FILE__).'/../v/'.$output_filename;
@@ -26,6 +33,7 @@ error_log($cmd);
 shell_exec($cmd . ' >/dev/null 2>/dev/null &');
 
 header('Location: /?'.$output_filename);
+
 /* $response = array('video' => 'http://dogfoo.de/v/'.$output_filename, */
 /*                   'thumbnail' => 0); */
 

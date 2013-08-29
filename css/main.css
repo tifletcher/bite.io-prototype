@@ -1,3 +1,29 @@
+legend {
+    text-align: center;
+}
+
+#urlbox {
+    width: 345px;
+}
+
+.secondspicker {
+    width:64px;
+}
+
+#start-mins {
+    width:40px;
+    margin-right: -1px;
+}
+
+#start-secs {
+    width:20px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;  
+}
+
+
+
 /*
  * HTML5 Boilerplate
  *
@@ -42,10 +68,6 @@ iframe {
     position: relative;
     margin-left: -320px;
     left: 50%;
-}
-
-.secondspicker {
-    width:118px;
 }
 
 button#submit {
@@ -136,26 +158,6 @@ textarea {
     color: #000;
     padding: 0.2em 0;
 }
-
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ==========================================================================
    Helper classes
