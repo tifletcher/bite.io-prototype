@@ -6,82 +6,34 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>bite.io</title>
+        <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="/css/normalize.css">
         <link rel="stylesheet" href="/css/main.css">
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
         <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
-    <body class="container">
+    <body>
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-        <form action="/rip" method="POST">
-            <fieldset>
-                <legend>get the perfect video bite.</legend>
-                <div class="control-group">
-                    <div class="controls controls-row">
-                        <div class="input-prepend">
-                            <span class="add-on">url</span>
-                            <input id="urlbox" name="url" class="input-xlarge" placeholder="youtube tag" type="text">
-                        </div>
-                        <div class="input-append">
-                            <input id="start-mins" name="start_mins" class="digits" placeholder="00" type="text">
-                            <input id="start-secs" name="start_secs" class="digits" placeholder="00" type="text">
-                            <span class="add-on">mm|ss</span>
-                        </div>
-                        <div class="input-append">
-                            <input id="duration" name="duration" class="secondspicker" placeholder="duration" type="text">
-                            <span class="add-on">ss</span>
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-            <div id="ytp">
-            </div>
-            <hr />
-            <button id="submit" type="submit" class="btn btn-inverse btn-large">bite!</button>
-        </form>
+        <video poster="movie.jpg" controls>
+        </video>
+
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="/js/plugins.js"></script>
         <script src="/js/main.js"></script>
 
-        <script type="text/javascript">
-
-        var getDigits = function(selector) {
-            var selval = $(selector).val();
-            if (selval) return parseInt(selval,10); 
-            return 0;
-        }
-
-        $(document).ready(function() {
-            var loader = function() {
-                var url = $('#urlbox').val();
-                if (!url) return;
-
-                var startTime = getDigits('#start-hours')*60*60 + getDigits('#start-mins')*60 + getDigits('#start-secs');
-                if (startTime > 0) {
-                    url += '?enablejsapi=1&version=3&start=' + startTime;
-
-                    if ($('#duration').val() != '')
-                        url += '&end=' + (startTime + getDigits('#duration'));
-                }
-
-                $('#ytp').html('<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/' + url + '" frameborder="0"></iframe>');
-                $('#ytp').removeClass('hidden');
-            }
-
-            $('#urlbox').keyup(loader);
-            $('#startbox').keyup(loader);
-            $('#duration').keyup(loader);
-        });
-
+        <script>
+          $(document).ready(function () {
+            $("video")[0].src = "/v/" + document.location.search.substr(1)
+          })
         </script>
-
     </body>
 </html>
